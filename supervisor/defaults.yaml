@@ -3,5 +3,6 @@
 supervisor:
   group: root
   legacy: True
+  programs: {}
   service_name: supervisord
   user: root

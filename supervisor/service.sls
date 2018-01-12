@@ -5,5 +5,5 @@
 
 supervisor.service:
   service.running:
-    - name: {{ supervisor.service_name }}
+    - name: {{supervisor.service_name}}
     - enable: True

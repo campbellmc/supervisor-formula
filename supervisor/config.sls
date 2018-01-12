@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
 
-{% from slspath+"/map.jinja" import supervisor with context %}
+{% from slspath+'/map.jinja' import supervisor with context %}
 
 supervisor-config:
   file.managed:
@@ -16,7 +16,6 @@ supervisor-config:
     - watch_in:
       - service: supervisor.service
 
-{% if 'programs' in supervisor %}
 {% for program,values in supervisor.programs.items() %}
 supervisor-program-{{ program }}:
 {% if ( 'enabled' in values and values.enabled ) or 'enabled' not in values %}
@@ -48,5 +47,4 @@ supervisor-program-{{ program }}:
 {% endif %}
 
 {% endfor %}
-{% endif %}
 
