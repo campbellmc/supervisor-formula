@@ -21,4 +21,3 @@ supervisor:
   lookup:
     service:
       name: supervisord
-

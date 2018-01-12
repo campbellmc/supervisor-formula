@@ -2,6 +2,6 @@
 # vim: ft=sls
 
 include:
-  - supervisor.install
-  - supervisor.config
-  - supervisor.service
+  - .install
+  - .config
+  - .service

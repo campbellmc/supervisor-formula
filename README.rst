@@ -21,7 +21,7 @@ Available states
 Installs the supervisor package, and starts the associated supervisor programs.
 
 
-Tested on Debian, Ubuntu 14, Ubuntu 16 and CentOS 7. CentOS 6 doesn't work.
+Tested on Debian, Ubuntu 14, Ubuntu 16, FreeBSD and CentOS 7. CentOS 6 doesn't work
 
 Warning
 =======
