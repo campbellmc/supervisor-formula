@@ -8,6 +8,8 @@ supervisor-config:
     - name: {{ supervisor.config }}
     - source: salt://{{slspath}}/files/supervisord.conf.jinja
     - template: jinja
+    - context:
+        config: {{supervisor.supervisord_conf}}
     - mode: 644
     - user: {{supervisor.user}}
     - group: {{supervisor.group}}
