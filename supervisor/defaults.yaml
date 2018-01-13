@@ -2,9 +2,12 @@
 # vim: ft=yaml
 
 supervisor:
+  config: /etc/supervisord.conf
   epel_sls: ~
   group: root
-  legacy: True
+  legacy: False
+  pkg: supervisor
   programs: {}
+  program_dir: /etc/supervisord.d
   service_name: supervisord
   user: root

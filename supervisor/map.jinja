@@ -5,12 +5,9 @@
 
 {% set os_family_map = salt['grains.filter_by']({
         'Debian': {
-            'pkg' : 'supervisor',
             'config': '/etc/supervisor/supervisord.conf',
             'program_dir': '/etc/supervisor/conf.d',
-            'service' : {
-                'name': 'supervisor',
-            },
+            'service_name' : 'supervisor',
             'supervisord_conf': {
                 'unix_http_server': {
                     'file': '/var/run/supervisor.sock',
@@ -35,13 +32,7 @@
         'Suse'  : {},
         'Arch'  : {},
         'RedHat': {
-            'pkg' : 'supervisor',
-            'config': '/etc/supervisord.conf',
             'epel_sls': 'epel',
-            'program_dir': '/etc/supervisord.d',
-            'service' : {
-                'name': 'supervisord',
-            },
             'supervisord_conf': {
                 'unix_http_server': {
                     'file': '/var/run/supervisor/supervisor.sock',
@@ -65,12 +56,9 @@
         },
         'FreeBSD': {
             'pkg' : 'py27-supervisor',
-            'config': '/etc/supervisord.conf',
+            'config': '/usr/local/etc/supervisord.conf',
             'group': 'wheel',
-            'program_dir': '/etc/supervisord.d',
-            'service' : {
-                'name': 'supervisord',
-            },
+            'program_dir': '/usr/local/etc/supervisord.d',
             'supervisord_conf': {
                 'unix_http_server': {
                     'file': '/var/run/supervisor/supervisor.sock',

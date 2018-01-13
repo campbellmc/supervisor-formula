@@ -6,7 +6,7 @@
 supervisor-config:
   file.managed:
     - name: {{ supervisor.config }}
-    - source: salt://supervisor/templates/supervisord.conf.tmpl
+    - source: salt://{{slspath}}/files/supervisord.conf.jinja
     - template: jinja
     - mode: 644
     - user: {{supervisor.user}}
@@ -20,12 +20,12 @@ supervisor-config:
 supervisor-program-{{ program }}:
 {% if ( 'enabled' in values and values.enabled ) or 'enabled' not in values %}
   file.managed:
-{% if 'legacy' in supervisor and supervisor.legacy %}
+{% if supervisor.legacy %}
     - name: {{ supervisor.program_dir }}/{{ program }}-prog.conf
 {% else %}
     - name: {{ supervisor.program_dir }}/{{ program }}.conf
 {% endif %}
-    - source: salt://supervisor/templates/program.conf.tmpl
+    - source: salt://{{slspath}}/files/program.conf.jinja
     - template: jinja
     - mode: 644
     - user: {{supervisor.user}}
@@ -37,7 +37,7 @@ supervisor-program-{{ program }}:
       - service: supervisor.service
 {% elif 'enabled' in values and not values.enabled %}
   file.absent:
-{% if 'legacy' in supervisor and supervisor.legacy %}
+{% if supervisor.legacy %}
     - name: {{ supervisor.program_dir }}/{{ program }}-prog.conf
 {% else %}
     - name: {{ supervisor.program_dir }}/{{ program }}.conf
