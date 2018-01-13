@@ -4,8 +4,10 @@
 {% from slspath+'/map.jinja' import supervisor with context %}
 
 {% if grains['os_family'] == 'RedHat' %}
+{% if supervisor.epel_sls %}
 include:
-    - epel
+    - {{supervisor.epel_sls}}
+{% endif %}
 {% endif %}
 
 supervisor-pkg:
