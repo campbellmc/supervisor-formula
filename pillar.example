@@ -2,22 +2,20 @@
 # Example pillar configuration
 #
 supervisor:
-  legacy: False # Just to use the my-app-prog.conf program name (legacy: True, by default) or just my-app.conf (legacy: False)
   programs:
     my-app:
-      enabled: True # The program.conf can be removed with this variable
-      autorestart: 'true'
-      autostart: 'true'
-      redirect_stderr: 'true'
-      startsecs: '5'
-      stdout_logfile_maxbytes: '50MB'
-      stdout_logfile_backups: '10'
-      command: /opt/app/my-app/bin/my-app.sh
-      user: 'root'
-      startretries: '10'
-      directory: '/opt/app/my-app/bin'
-      stdout_logfile: '/var/log/my-app/my-app.log'
-
-  lookup:
-    service:
-      name: supervisord
+      autorestart: true
+      autostart: true
+      command: "/opt/app/my-app/bin/my-app.sh --some_param=something"
+      directory: /opt/app/my-app/bin
+      enabled: true
+      environment: "PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
+      redirect_stderr: true
+      startretries: 10
+      startsecs: 5
+      stderr_logfile: /var/log/my-app/error.log
+      stdout_logfile: /var/log/my-app/my-app.log
+      stdout_logfile_backups: 10
+      stdout_logfile_maxbytes: 50MB
+      stopsignal: INT
+      user: root

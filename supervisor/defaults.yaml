@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 
+---
 supervisor:
   config: /etc/supervisord.conf
+  dir_mode: "0755"
   epel_sls: ~
   group: root
-  legacy: False
+  include_path: /etc/supervisord.d
+  mode: "0440"
   pkg: supervisor
   programs: {}
-  program_dir: /etc/supervisord.d
   service_name: supervisord
   user: root

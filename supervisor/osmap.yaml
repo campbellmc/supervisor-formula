@@ -5,7 +5,7 @@
 Arch: {}
 Debian:
   config: /etc/supervisor/supervisord.conf
-  program_dir: /etc/supervisor/conf.d
+  include_path: /etc/supervisor/conf.d
   service_name: supervisor
   supervisord_conf:
     include:
@@ -26,7 +26,7 @@ FreeBSD:
   config: /usr/local/etc/supervisord.conf
   group: wheel
   pkg: py27-supervisor
-  program_dir: /usr/local/etc/supervisord.d
+  include_path: /usr/local/etc/supervisord.d
   supervisord_conf:
     supervisord:
       childlogdir: /var/log/supervisor
