@@ -14,10 +14,10 @@ supervisor_config:
     - mode: {{supervisor.mode}}
     - user: {{supervisor.user}}
     - group: {{supervisor.group}}
-    - require_in:
-      - service: supervisor.service
-    - watch_in:
-      - service: supervisor.service
+{#    - require_in: #}
+{#      - service: supervisor.service #}
+{#    - watch_in: #}
+{#      - service: supervisor.service #}
 {% endif %}
 
 {% for program,values in supervisor.programs.items() %}
@@ -33,12 +33,12 @@ supervisor_program_{{program}}:
     - defaults:
         program: {{program}}
         values: {{values}}
-    - watch_in:
-      - service: supervisor.service
+{#    - watch_in: #}
+{#      - service: supervisor.service #}
 {% elif 'enabled' in values and not values.enabled %}
   file.absent:
     - name: {{supervisor.include_path}}/{{program}}.ini
-    - watch_in:
-        - service: supervisor.service
+{#    - watch_in: #}
+{#        - service: supervisor.service #}
 {% endif %}
 {% endfor %}
