@@ -18,7 +18,7 @@ supervisor_config:
       - service: supervisor.service
     - watch_in:
       - service: supervisor.service
-{% endfor %}
+{% endif %}
 
 {% for program,values in supervisor.programs.items() %}
 supervisor_program_{{program}}:
