@@ -32,7 +32,7 @@ supervisor_program_{{program}}:
     - group: {{supervisor.group}}
     - defaults:
         program: {{program}}
-        values: {{values}}
+        values: {{values|json}}
 {#    - watch_in: #}
 {#      - service: supervisor.service #}
 {% elif 'enabled' in values and not values.enabled %}
